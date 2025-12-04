@@ -2,6 +2,7 @@ require("dotenv").config();
 const cors = require('cors');
 const mongoose = require("mongoose");
 const express = require("express");
+const path = require("path");
 const app = new express();
 app.use(cors());
 const ConnectDb = require("./utilities/db.util");
@@ -11,6 +12,7 @@ const priorityRouter = require("./routes/priority.route");
 const userRouter = require("./routes/user.route");
 const taskRouter = require("./routes/task.route");
 const otpRouter = require("./routes/otp.route");
+app.use(express.static(path.join(__dirname, "../dist")));
 const port = process.env.PORT;
 const host = process.env.HOST;
 
